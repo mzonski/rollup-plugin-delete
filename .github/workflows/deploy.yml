@@ -22,6 +22,6 @@ jobs:
       - run: pnpm run build
       - run: pnpm exec publint
       - run: pnpm test
-      - run: pnpm publish --ignore-scripts --no-git-checks
+      - run: pnpm publish --ignore-scripts --no-git-checks --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
