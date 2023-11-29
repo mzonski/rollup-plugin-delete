@@ -1,20 +1,21 @@
+import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest'
+
 import { rollup, watch } from 'rollup'
 import fs from 'fs-extra'
 import replace from 'replace-in-file'
-import del from '../src'
+import { del } from '../src'
+import type { Options } from '../src'
 
 process.chdir(`${__dirname}/fixtures`)
 
-function sleep(ms) {
+function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms))
 }
 
-async function build(options) {
+async function build(options: Options = {}) {
   await rollup({
     input: 'src/index.js',
-    plugins: [
-      del(options)
-    ]
+    plugins: [del(options)],
   })
 }
 
@@ -38,7 +39,7 @@ describe('Targets', () => {
 
   test('Files', async () => {
     await build({
-      targets: 'dist/public/*.{js,css}'
+      targets: 'dist/public/*.{js,css}',
     })
 
     expect(await fs.pathExists('dist/public')).toBe(true)
@@ -48,7 +49,7 @@ describe('Targets', () => {
 
   test('Folders', async () => {
     await build({
-      targets: 'dist'
+      targets: 'dist',
     })
 
     expect(await fs.pathExists('dist/public')).toBe(false)
@@ -59,11 +60,11 @@ describe('Targets', () => {
 describe('Options', () => {
   /* eslint-disable no-console */
   test('Verbose', async () => {
-    console.log = jest.fn()
+    console.log = vi.fn()
 
     await build({
       targets: 'dist',
-      verbose: true
+      verbose: true,
     })
 
     expect(await fs.pathExists('dist/public')).toBe(false)
@@ -74,11 +75,11 @@ describe('Options', () => {
   })
 
   test('Verbose, no targets', async () => {
-    console.log = jest.fn()
+    console.log = vi.fn()
 
     await build({
       targets: 'build',
-      verbose: true
+      verbose: true,
     })
 
     expect(await fs.pathExists('dist/public')).toBe(true)
@@ -88,17 +89,19 @@ describe('Options', () => {
   })
 
   test('DryRun', async () => {
-    console.log = jest.fn()
+    console.log = vi.fn()
 
     await build({
       targets: 'dist',
-      dryRun: true
+      dryRun: true,
     })
 
     expect(await fs.pathExists('dist/public')).toBe(true)
     expect(await fs.pathExists('dist')).toBe(true)
     expect(console.log).toHaveBeenCalledTimes(2)
-    expect(console.log).toHaveBeenCalledWith('Expected files and folders to be deleted: 1')
+    expect(console.log).toHaveBeenCalledWith(
+      'Expected files and folders to be deleted: 1'
+    )
     expect(console.log).toHaveBeenCalledWith(`${__dirname}/fixtures/dist`)
   })
   /* eslint-enable no-console */
@@ -110,14 +113,14 @@ describe('Options', () => {
       input: 'src/index.js',
       output: {
         dir: 'dist',
-        format: 'es'
+        format: 'es',
       },
       plugins: [
         del({
           targets: 'dist',
-          runOnce: true
-        })
-      ]
+          runOnce: true,
+        }),
+      ],
     })
 
     await sleep(1000)
@@ -131,7 +134,7 @@ describe('Options', () => {
     await replace({
       files: 'src/index.js',
       from: 'hey',
-      to: 'ho'
+      to: 'ho',
     })
 
     await sleep(1000)
@@ -143,7 +146,7 @@ describe('Options', () => {
     await replace({
       files: 'src/index.js',
       from: 'ho',
-      to: 'hey'
+      to: 'hey',
     })
   })
 })
