@@ -1,7 +1,7 @@
 import { deleteAsync } from 'del'
 
-import type { Plugin } from 'rollup'
 import type { Options as DelOptions } from 'del'
+import type { Plugin } from 'rollup'
 
 export interface Options extends DelOptions {
   /**
@@ -56,8 +56,8 @@ export function del(options: Options = {}): Plugin {
 
         console.log(message)
 
-        if (paths.length > 0) {
-          paths.forEach((path) => console.log(path))
+        for (const path of paths) {
+          console.log(path)
         }
       }
 

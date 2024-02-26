@@ -1,8 +1,8 @@
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest'
 
-import { rollup, watch } from 'rollup'
 import fs from 'fs-extra'
 import replace from 'replace-in-file'
+import { rollup, watch } from 'rollup'
 import { del } from '../src'
 import type { Options } from '../src'
 
@@ -100,7 +100,7 @@ describe('Options', () => {
     expect(await fs.pathExists('dist')).toBe(true)
     expect(console.log).toHaveBeenCalledTimes(2)
     expect(console.log).toHaveBeenCalledWith(
-      'Expected files and folders to be deleted: 1'
+      'Expected files and folders to be deleted: 1',
     )
     expect(console.log).toHaveBeenCalledWith(`${__dirname}/fixtures/dist`)
   })
