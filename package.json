@@ -29,10 +29,7 @@
       "default": "./dist/index.mjs"
     }
   },
-  "files": [
-    "dist",
-    "README.md"
-  ],
+  "files": ["dist", "README.md"],
   "keywords": [
     "rollup",
     "rollup-plugin",
