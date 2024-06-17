@@ -1,6 +1,6 @@
 {
   "name": "@kineticcafe/rollup-plugin-delete",
-  "version": "3.0.0-beta.1",
+  "version": "3.0.0",
   "type": "module",
   "contributors": [
     "Vlad Shcherbin <vlad.shcherbin@gmail.com>",
@@ -48,16 +48,24 @@
     "test": "vitest"
   },
   "dependencies": {
-    "del": "^7.1.0"
+    "globby": "^14.0.1",
+    "is-glob": "^4.0.3",
+    "is-path-cwd": "^3.0.0",
+    "is-path-inside": "^4.0.0",
+    "p-map": "^7.0.2",
+    "rimraf": "^5.0.7",
+    "slash": "^5.1.0"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.8.1",
     "@types/fs-extra": "^11.0.4",
+    "@types/graceful-fs": "^4.1.9",
+    "@types/is-glob": "^4.0.4",
+    "@types/node": "20",
     "@types/rollup-plugin-auto-external": "^2.0.5",
     "fs-extra": "^11.2.0",
     "publint": "^0.2.8",
     "replace-in-file": "^7.2.0",
-    "rimraf": "^5.0.7",
     "rollup": "^4.18.0",
     "rollup-plugin-auto-external": "^2.0.0",
     "typescript": "^5.4.5",
