@@ -1,25 +1,13 @@
 {
+  "name": "@kineticcafe/rollup-plugin-delete",
+  "version": "3.0.0-beta.1",
+  "type": "module",
   "contributors": [
     "Vlad Shcherbin <vlad.shcherbin@gmail.com>",
     "Austin Ziegler <aziegler@kineticcommerce.com>"
   ],
-  "dependencies": {
-    "del": "^7.1.0"
-  },
+  "types": "./dist/index.d.ts",
   "description": "Delete files and folders using Rollup",
-  "devDependencies": {
-    "@biomejs/biome": "^1.8.1",
-    "@types/fs-extra": "^11.0.4",
-    "@types/rollup-plugin-auto-external": "^2.0.5",
-    "fs-extra": "^11.2.0",
-    "publint": "^0.2.8",
-    "replace-in-file": "^7.2.0",
-    "rimraf": "^5.0.7",
-    "rollup": "^4.18.0",
-    "rollup-plugin-auto-external": "^2.0.0",
-    "typescript": "^5.4.5",
-    "vitest": "^1.6.0"
-  },
   "engines": {
     "node": ">= 16"
   },
@@ -29,10 +17,7 @@
       "default": "./dist/index.mjs"
     }
   },
-  "files": [
-    "dist",
-    "README.md"
-  ],
+  "files": ["dist", "README.md"],
   "keywords": [
     "rollup",
     "rollup-plugin",
@@ -45,10 +30,6 @@
     "directory"
   ],
   "license": "MIT",
-  "name": "@kineticcafe/rollup-plugin-delete",
-  "peerDependencies": {
-    "rollup": "^1.20.0 || ^2.0.0 || ^3.0.0 || ^4.0.0"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/kineticcafe/rollup-plugin-delete"
@@ -66,8 +47,24 @@
     "prepublishOnly": "pnpm check && pnpm test && pnpm clean && pnpm build && pnpm publint",
     "test": "vitest"
   },
-  "types": "./dist/index.d.ts",
-  "type": "module",
-  "version": "3.0.0-beta.1",
+  "dependencies": {
+    "del": "^7.1.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.8.1",
+    "@types/fs-extra": "^11.0.4",
+    "@types/rollup-plugin-auto-external": "^2.0.5",
+    "fs-extra": "^11.2.0",
+    "publint": "^0.2.8",
+    "replace-in-file": "^7.2.0",
+    "rimraf": "^5.0.7",
+    "rollup": "^4.18.0",
+    "rollup-plugin-auto-external": "^2.0.0",
+    "typescript": "^5.4.5",
+    "vitest": "^1.6.0"
+  },
+  "peerDependencies": {
+    "rollup": "^1.20.0 || ^2.0.0 || ^3.0.0 || ^4.0.0"
+  },
   "packageManager": "pnpm@9.4.0+sha512.f549b8a52c9d2b8536762f99c0722205efc5af913e77835dbccc3b0b0b2ca9e7dc8022b78062c17291c48e88749c70ce88eb5a74f1fa8c4bf5e18bb46c8bd83a"
 }
