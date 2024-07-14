@@ -1,7 +1,7 @@
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest'
 
 import fs from 'fs-extra'
-import replace from 'replace-in-file'
+import { replaceInFile } from 'replace-in-file'
 import { rollup, watch } from 'rollup'
 import { del } from '../src'
 import type { Options } from '../src'
@@ -131,7 +131,7 @@ describe('Options', () => {
 
     expect(await fs.pathExists('dist/public/app.js')).toBe(true)
 
-    await replace({
+    await replaceInFile({
       files: 'src/index.js',
       from: 'hey',
       to: 'ho',
@@ -143,7 +143,7 @@ describe('Options', () => {
 
     watcher.close()
 
-    await replace({
+    await replaceInFile({
       files: 'src/index.js',
       from: 'ho',
       to: 'hey',
