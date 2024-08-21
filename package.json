@@ -1,11 +1,12 @@
 {
   "name": "@kineticcafe/rollup-plugin-delete",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "type": "module",
   "contributors": [
     "Vlad Shcherbin <vlad.shcherbin@gmail.com>",
     "Austin Ziegler <aziegler@kineticcommerce.com>"
   ],
+  "main": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "description": "Delete files and folders using Rollup",
   "engines": {
